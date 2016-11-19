@@ -1,10 +1,10 @@
 package org.nicolas.app;
 
-public abstract class BaseListX {
+public abstract class BaseList {
 	
 	private int size = 0;
 	
-	public BaseListX(int input){
+	public BaseList(int input){
 		this.size = input;
 	}
 

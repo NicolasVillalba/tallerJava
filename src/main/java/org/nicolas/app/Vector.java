@@ -1,11 +1,13 @@
 package org.nicolas.app;
 
-public class ArrayListX extends BaseListX implements ListX{
+import java.util.Iterator;
+
+public class Vector extends BaseList implements List{
 	
 	private static final int DEFAUL_CAP = 10;
 	private Object[] buff;
 	
-	public ArrayListX(int input) {
+	public Vector(int input) {
 		super(input);
 		buff = new Object[DEFAUL_CAP];
 		
@@ -66,6 +68,18 @@ public class ArrayListX extends BaseListX implements ListX{
 		for (int k = pos; k < path; k++) {
 			buff[k] = buff[k + 1];
 		}
+	}
+
+	@Override
+	public Iterator<Object> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean insert(int pos, Object e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

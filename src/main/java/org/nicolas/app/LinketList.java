@@ -1,11 +1,10 @@
 package org.nicolas.app;
 
-public class LinketListX extends BaseListX implements ListX{
-	
-	
-	
+import java.util.Iterator;
 
-	public LinketListX(int input) {
+public class LinketList extends BaseList implements List{	
+
+	public LinketList(int input) {
 		super(input);
 		
 	}
@@ -31,6 +30,18 @@ public class LinketListX extends BaseListX implements ListX{
 	public Object remove(Object e) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Iterator<Object> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean insert(int pos, Object e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
