@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -17,6 +16,7 @@ import org.junit.Test;
 public class LinketListTest {
 	
 	private LinketList list;
+	private LinketList list2;
 
 	/**
 	 * @throws java.lang.Exception
@@ -24,6 +24,7 @@ public class LinketListTest {
 	@Before
 	public void setUp() throws Exception {
 		list = new LinketList();
+		list2 = new LinketList();
 	}
 
 	/**
@@ -39,7 +40,10 @@ public class LinketListTest {
 	 */
 	@Test
 	public void testSize() {
-		//fail("Not yet implemented");
+		
+		loadByAdd(list, "1", "2", "3", "4", "5", "6");
+		
+		assertThat(list.size(), is(equalTo(6)));
 	}
 	
 	/**
@@ -47,9 +51,21 @@ public class LinketListTest {
 	 * @param input
 	 * @param objects
 	 */
-	private static void load(LinketList input, Object ...objects ){
-		for (int i = 0; i < objects.length; i++) {
-			input.add(objects[i]);
+	private static void loadByAdd(LinketList input, Object ... objects ){
+		for(Object n : objects){
+			input.add(n);
+		}
+	}
+	
+	/**
+	 * Accessory method for data initialization
+	 * @param input
+	 * @param objects
+	 */
+	private static void loadByAddAtFirst(LinketList input, Object ... objects ){
+		
+		for(Object n : objects){
+			input.addAtFirst(n);
 		}
 	}
 
@@ -57,9 +73,29 @@ public class LinketListTest {
 	 * Test method for {@link org.nicolas.app.LinketList#add(java.lang.Object)}.
 	 */
 	@Test
+	public void testAddAtFirst() {	
+		
+		loadByAddAtFirst(list2, "Pipo", "Lito", "Miguel", "Marcos");
+		
+		assertThat(list2.size(), is(equalTo(4)));
+	}
+	
+	/**
+	 * Test if the last element created with addAtFirst() is
+	 * the first in the list 
+	 */
+	@Test
+	public void testIndexCreatedOnlyWithAddAtFirst() {	
+		
+		loadByAddAtFirst(list2, "Pipo", "Lito", "Miguel", "Marcos");
+		
+		assertThat(list2.get(0), is(equalTo("Marcos")));
+	}
+	
+	@Test
 	public void testAdd() {	
 		
-		load(list, "sxsaxsxas", "sxsaxsxas", "sxsaxsxas", "sxsaxsxas");
+		loadByAdd(list, "sxs", "sxsa", "sxsax", "sxsaxsxas");
 		
 		assertThat(list.size(), is(equalTo(4)));
 	}
@@ -70,17 +106,41 @@ public class LinketListTest {
 	@Test
 	public void testGetLast() {
 		
-		load(list, "sxsaxsxas", "sxsaxsxas", "sxsaxsxas", "nicolas");
+		loadByAdd(list, "sxsaxsxas", "sxsaxsxas", "sxsaxsxas", "nicolas");
 		
 		assertThat(list.getLast(), is(equalTo("nicolas")));
 	}
 	
 	@Test
-	public void testGetWithLastElement() {
+	public void testGet() {
 		
-		load(list, "sxsaxsxas", "carla", "milka", "nicolas");
+		loadByAdd(list, "sxsaxsxas", "carla", "milka", "nicolas");
 		
-		assertThat(list.get("nicolas"), is(equalTo(3)));
+		assertThat(list.get(2), is(equalTo("milka")));
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testGetException() {
+		
+		loadByAdd(list, "sxsaxsxas", "carla", "milka", "nicolas");
+		
+		assertThat(list.get(6), is(equalTo("milka")));
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testGetExceptionNegative() {
+		
+		loadByAdd(list, "sxsaxsxas", "carla", "milka", "nicolas");
+		
+		assertThat(list.get(-1), is(equalTo("mdsdsdilka")));
+	}
+	
+	@Test
+	public void testLastIndexOf() {
+		
+		loadByAdd(list, "Homero", "March", "Lisa", "Bart");
+		
+		assertThat(list.indexOf("Bart"), is(equalTo(3)));
 	}
 	
 	
@@ -91,7 +151,7 @@ public class LinketListTest {
 	@Test
 	public void testRemove() {
 		
-		load(list, "sxsaxsxas", "322323232", "¿'¿'¿'¿'¿", "MMMMMMMMM");
+		loadByAdd(list, "sxsaxsxas", "322323232", "¿'¿'¿'¿'¿", "MMMMMMMMM");
 		
 		assertThat(list.remove("322323232"), is(true));
 	}

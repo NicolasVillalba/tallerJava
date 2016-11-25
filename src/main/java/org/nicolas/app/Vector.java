@@ -3,8 +3,6 @@ package org.nicolas.app;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import org.hamcrest.internal.ArrayIterator;
-
 public class Vector implements List {
 
 	private int size = 0;
@@ -100,7 +98,7 @@ public class Vector implements List {
 	}
 
 	@Override
-	public int get(Object e) {
+	public int indexOf(Object e) {
 		for (int i = 0; i < buff.length; i++) {
 			if (buff[i].equals(e)) {
 				return i;

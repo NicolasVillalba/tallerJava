@@ -35,11 +35,11 @@ public interface List extends Iterable<Object>{
 	Object get(int k);
 	
 	/**
-	 * 
+	 * Return the index of the the given element, if exist
 	 * @param e element to find
 	 * @return the position of the element otherwise -1
 	 */
-	int get(Object e);
+	int indexOf(Object e);
 	
 	/**
 	 * return the last element of the list

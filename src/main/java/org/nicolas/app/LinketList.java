@@ -46,8 +46,16 @@ public class LinketList implements List{
 
 	@Override
 	public Object get(int k) {
-		// TODO Auto-generated method stub
-		return null;
+		if (k >= size() || k < 0) {
+			throw new IndexOutOfBoundsException("Key doesn't exist");
+		}
+		Node temp = head;
+		int j = 0;
+		while (k != j) {
+			temp = temp.getNext();
+			j++;
+		}
+		return temp.getVal();
 	}
 	
 	@Override
@@ -90,7 +98,7 @@ public class LinketList implements List{
 	}
 
 	@Override
-	public int get(Object e) {
+	public int indexOf(Object e) {
 		Node temp = head;
 		int k = 0;
 		while (temp != null) {
@@ -105,8 +113,14 @@ public class LinketList implements List{
 	
 	@Override
 	public boolean addAtFirst(Object e) {
-		// TODO Auto-generated method stub
-		return false;
+		if(e == null){
+			return false;
+		}
+		Node temp = head;
+		head = new Node(e);
+		head.setNext(temp);
+		size ++;
+		return true;
 	}
 	
 	@Override
