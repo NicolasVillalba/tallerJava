@@ -86,9 +86,29 @@ public class LinketList implements List{
 	}
 
 	@Override
-	public boolean insert(int pos, Object e) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insert(int k, Object e) {
+		
+		if (k >= size() || k < 0) {
+			return false;
+		}
+		
+		if (k == 0) {
+			addAtFirst(e);
+			return true;
+		}
+		
+		Node temp = head;
+		int j = 0; 
+		k = k -1;
+		while (k != j) {
+			temp = temp.getNext();
+			j++;
+		}
+		Node in = new Node(e);
+		in.setNext(temp.getNext());
+		temp.setNext(in);
+		size++;
+		return true;
 	}
 
 	@Override

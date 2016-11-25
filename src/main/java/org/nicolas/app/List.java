@@ -66,6 +66,6 @@ public interface List extends Iterable<Object>{
 	 * @param e
 	 * @return
 	 */
-	boolean insert(int pos, Object e);
+	boolean insert(int k, Object e);
 	
 }

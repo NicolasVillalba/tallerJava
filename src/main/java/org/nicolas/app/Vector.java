@@ -84,11 +84,11 @@ public class Vector implements List {
 	}
 
 	@Override
-	public boolean insert(int pos, Object e) {
-		if (pos > size && pos < 0) {
+	public boolean insert(int k, Object e) {
+		if (k > size && k < 0) {
 			return false;
 		}
-		buff[pos] = e;
+		buff[k] = e;
 		return true;
 	}
 
