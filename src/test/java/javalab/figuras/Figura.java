@@ -3,11 +3,16 @@ package javalab.figuras;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public abstract class Figura implements Dibujable{
+public abstract class Figura implements Dibujable {
+	
 	private static int id_ref=0, x_ref=10, y_ref=10;
+	
 	private int id;
+	
 	private String etiqueta;
+	
 	private Punto ubicacion;
+	
 	private Color color;
 	
 	public Figura(){
